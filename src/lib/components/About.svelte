@@ -17,7 +17,7 @@
 		<h3 class="text-xl md:text-2xl text-[#333333] font-light text-center mr-3">{data.title}</h3>
 	</div>
 	<div class="md:my-16 mb-5">
-		<p class="mt-2 md:text-lg text-[#333333] md:pr-12 pl-52 font-thin text-left px-5">
+		<p class="mt-2 md:text-lg text-[#333333] md:pr-12 md:pl-52 font-thin text-left px-5">
 			<span class="text-[#8aa3ff] font-normal text-2xl">Salut</span>, je m'appelle {data.name}. Je
 			viens de {data.location}. {data.about}
 		</p>
