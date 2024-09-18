@@ -10,13 +10,13 @@
 		alt={data.name}
 		class="max-md:hidden w-60 h-60 -top-5 -left-[5.3rem] absolute max-w-none max-h-none rounded-full object-cover"
 	/>
-	<div class="absolute -top-12 right-6 md:right-52 space-y-1 md:space-y-2">
-		<h2 class="text-3xl md:text-4xl font-bold bg-white p-4 text-[#8aa3ff] custom-font">
+	<div class="md:absolute -top-12 md:right-52 space-y-1 md:space-y-2">
+		<h2 class="text-2xl text-center md:text-4xl font-bold bg-white p-4 text-[#8aa3ff] custom-font">
 			{data.name}
 		</h2>
 		<h3 class="text-xl md:text-2xl text-[#333333] font-light text-center mr-3">{data.title}</h3>
 	</div>
-	<div class="my-16 mb-5">
+	<div class="md:my-16 mb-5">
 		<p class="mt-2 md:text-lg text-[#333333] md:pl-48 md:pr-12 font-thin text-left px-5">
 			<span class="text-[#8aa3ff] font-normal text-2xl">Salut</span>, je m'appelle {data.name}. Je
 			viens de {data.location}. {data.about}
