@@ -35,9 +35,9 @@
   <Header />
   
   <section class="md:flex gap-16">
-    <div class="bg-white py-24 md:px-24 px-5">
+    <div class="bg-white py-24 lg:px-24 px-5">
       <About data={portfolioData} />
-      <div class="md:grid md:grid-cols-2 gap-5 md:gap-16">
+      <div class="lg:grid lg:grid-cols-2 gap-5 lg:gap-16">
         <Education data={portfolioData} />
         <Experience data={portfolioData.experiences} />
       </div>
