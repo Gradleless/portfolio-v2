@@ -29,7 +29,7 @@
 			<p
 				class="mt-3 px-4 md:px-10 py-1 rounded-full border-pink-200 border-2 text-[#FF88A4] font-semibold text-sm 2xl:text-base text-center"
 			>
-				Autres Projets
+				Mon CV
 			</p>
 		</div>
 	</div>
