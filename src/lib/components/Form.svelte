@@ -9,7 +9,7 @@
     const schema = z.object({
         name: z.string().min(2, "Un nom est requis (minimum 2 caractères)"),
         email: z.string().email("Email invalide"),
-        message: z.string().min(40, "Un minimum de 40 caractère est requis").max(255, "Un maximum de 255 caractères est autorisé"),
+        message: z.string().min(40, "Un minimum de 40 caractères est requis").max(255, "Un maximum de 255 caractères est autorisé"),
     });
 
     const handleSubmit = async (event: Event) => {
