@@ -30,7 +30,6 @@
 	});
 
 	$effect(() => {
-		console.log('toggled', toggled);
 		if (toggled) {
 			currentData = data;
 		} else {
