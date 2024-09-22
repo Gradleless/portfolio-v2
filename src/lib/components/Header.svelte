@@ -4,13 +4,13 @@
 </script>
 
 <section class="md:px-16 px-5 min-h-screen">
-	<div class="text-left flex flex-wrap gap-2 md:items-end custom-font mb-5">
+	<div class="text-left flex flex-wrap gap-2 md:items-end font-playwrite mb-5">
 		<h1 class="text-5xl 2xl:text-6xl font-bold text-[#8aa3ff]">Salut,</h1>
 		<p class="mt-2 text-xl 2xl:text-2xl text-[#333333] leading-9">
 			Je suis heureuse de vous rencontrer
 		</p>
 	</div>
-	<p class="custom-font leading-10 2xl:text-lg">
+	<p class="font-playwrite leading-10 2xl:text-lg">
 		J'espère que vous aimerez mon
 		<span class="relative">
 			Portfolio

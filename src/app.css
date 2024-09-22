@@ -4,11 +4,7 @@
 
 @font-face {
   font-family: "Playwrite BE WAL";
-  src: url("Playwrite.woff2") format("woff2");
-}
-
-.custom-font {
-  font-family: "Playwrite BE WAL";
-  font-optical-sizing: auto;
+  src: url("/Playwrite.woff2") format("woff2"),
+  url("/Playwrite.woff2") format("woff2");
   font-style: normal;
 }
