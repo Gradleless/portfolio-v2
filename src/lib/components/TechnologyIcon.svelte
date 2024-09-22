@@ -7,7 +7,7 @@
 
   let { src, alt, href }: TechnologyIconProps = $props();
   $effect.pre(() => {
-    src = "./techIcons/" + src + ".png";
+    src = "./techIcons/" + src + ".webp";
   });
 </script>
 
