@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Playwrite BE WAL";
+  src: url("Playwrite.woff2");
+}
+
 .custom-font {
-  font-family: "Playwrite BE WAL", cursive;
+  font-family: "Playwrite BE WAL";
   font-optical-sizing: auto;
-  font-weight: <weight>;
   font-style: normal;
 }
