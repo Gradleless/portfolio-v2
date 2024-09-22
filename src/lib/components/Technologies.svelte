@@ -44,7 +44,7 @@
 			<TechnologyIcon src={tech.src} alt={tech.alt} href={tech.href} />
         </span>
 	{/each}
-	<button onclick={toggle}>
+	<button onclick={toggle} aria-label="Active les technologies">
 		<div class="rounded-md border-[#FF88A4] border-2 hover:border-pink-300 fill-[#FF88A4] hover:fill-pink-200 duration-300">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
