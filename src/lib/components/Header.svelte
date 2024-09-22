@@ -1,5 +1,6 @@
 <script>
 	import StarColumn from './StarColumn.svelte';
+	import QRCode from "$lib/images/qr-code.png?enhanced";
 </script>
 
 <section class="md:px-16 px-5 min-h-screen">
@@ -25,7 +26,7 @@
 		</div>
 
 		<div class="absolute bottom-10 right-0 hover:scale-110 duration-200">
-			<img src="./qr-code.svg" alt="QR Code" class="w-32 h-32 md:w-48 md:h-48 2xl:h-56 2xl:w-56" />
+			<enhanced:img src={QRCode} alt="QR Code" class="w-32 h-32 md:w-48 md:h-48 2xl:h-56 2xl:w-56" />
 			<p
 				class="mt-3 px-4 md:px-10 py-1 rounded-full border-pink-200 border-2 text-[#FF88A4] font-semibold text-sm 2xl:text-base text-center"
 			>
