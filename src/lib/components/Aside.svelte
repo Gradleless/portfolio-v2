@@ -15,7 +15,7 @@
 	};
 </script>
 
-<div class="max-md:mx-5 md:mr-16 space-y-10 md:space-y-24 min-w-72">
+<div class="max-xl:mx-5 xl:mr-16 space-y-10 xl:space-y-24 min-w-72">
 	<section class="mt-10 space-y-4">
 		<SectionTitle title="INTÉRÊTS" />
 		<div class="flex flex-wrap justify-between gap-2">

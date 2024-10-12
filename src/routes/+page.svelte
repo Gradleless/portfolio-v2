@@ -40,10 +40,10 @@
 	<meta name="twitter:image" content="https://lycia.anhost.fr/og.png" />
 	<link rel="canonical" href="https://lycia.anhost.fr" />
 </svelte:head>
-<main class="min-h-screen bg-[#fcf8f0] max-md:py-24 md:pt-32">
+<main class="min-h-screen bg-[#fcf8f0] max-md:py-24 md:pt-32 pb-5">
 	<Header />
 
-	<section class="md:flex gap-16">
+	<section class="xl:flex gap-16">
 		<div class="bg-white py-24 lg:px-24 px-5">
 			<About data={portfolioData} />
 			<div class="lg:grid lg:grid-cols-2 gap-5 lg:gap-16">

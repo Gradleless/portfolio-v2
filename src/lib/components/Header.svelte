@@ -14,7 +14,7 @@
 		J'espère que vous aimerez mon
 		<span class="relative">
 			Portfolio
-			<span class="absolute right-[-1.8vw] rotate-12 top-3 text-[#C8D4FF] text-2xl 2xl:text-3xl">♡</span>
+			<span class="absolute right-[-1.8vw] max-md:right-[-4vw] rotate-12 top-3 text-[#C8D4FF] text-2xl 2xl:text-3xl">♡</span>
 		</span>
 	</p>
 
