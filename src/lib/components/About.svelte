@@ -8,6 +8,7 @@
 	<enhanced:img
 		src={MyImage}
 		alt={data.name}
+		loading="lazy"
 		class="max-lg:hidden w-60 h-60 -top-5 -left-[5.3rem] absolute max-w-none max-h-none rounded-full object-cover"
 	/>
 	<div class="lg:absolute -top-12 lg:right-52 2xl:right-1/3 space-y-1 md:space-y-2">

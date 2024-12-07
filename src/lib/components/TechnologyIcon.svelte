@@ -12,5 +12,5 @@
 </script>
 
 <a {href} target="_blank" rel="noopener noreferrer">
-  <img {src} {alt} class="w-10 h-10" />
+  <img loading="lazy" {src} {alt} class="w-10 h-10" />
 </a>
