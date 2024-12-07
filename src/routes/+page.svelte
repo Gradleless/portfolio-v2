@@ -5,12 +5,8 @@
 	import Education from '$lib/components/Education.svelte';
 	import Experience from '$lib/components/Experience.svelte';
 	import Sidebar from '$lib/components/Aside.svelte';
-	import { dev } from '$app/environment';
-	import { inject } from '@vercel/analytics';
 	import { portfolioData } from '$lib/stores/portfolio';
 	import '../app.css';
-
-	inject({ mode: dev ? 'development' : 'production' });
 </script>
 
 <svelte:head>
