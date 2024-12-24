@@ -36,7 +36,7 @@
 	<meta name="twitter:image" content="https://lycia.anhost.fr/og.png" />
 	<link rel="canonical" href="https://lycia.anhost.fr" />
 </svelte:head>
-<main class="min-h-screen bg-[#fcf8f0] max-md:py-24 md:pt-32 pb-5">
+<main class="min-h-screen bg-[#fcf8f0] max-md:py-24 md:pt-32">
 	<Header />
 
 	<section class="xl:flex gap-16">
