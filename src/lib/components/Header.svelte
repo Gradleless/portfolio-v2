@@ -25,7 +25,7 @@
 			<StarColumn height="h-40 2xl:h-72 mb-3" starPosition="-bottom-[0.85rem]" />
 		</div>
 
-		<a href="/Dufour-Lycia-CV.pdf" class="absolute bottom-10 right-0 hover:scale-110 duration-200">
+		<a href="/CV-Dufour-LYCIA-CN.pdf" class="absolute bottom-10 right-0 hover:scale-110 duration-200">
 			<enhanced:img src={QRCode} alt="QR Code" class="w-32 h-32 md:w-48 md:h-48 2xl:h-56 2xl:w-56" />
 			<p
 				class="mt-3 px-4 md:px-10 py-1 rounded-full border-pink-200 border-2 text-[#FF88A4] font-semibold text-sm 2xl:text-base text-center"

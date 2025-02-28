@@ -8,6 +8,10 @@ export const portfolioData: PortfolioData = {
 		"Je suis une développeuse web fullstack. Je suis une personne qui aime et est passionnée par la beauté, c'est pourquoi mes travaux sont réalisés aussi soigneusement que possible.",
 	education: [
 		{
+			period: '2024 - 2025',
+			description: 'BTS SIO SLAM'
+		},
+		{
 			period: '2020 - 2023',
 			description: 'STI2D opt. SIN (Systèmes d\'Information et Numérique)'
 		},
@@ -46,7 +50,7 @@ export const portfolioData: PortfolioData = {
 				"Conception d'une application hébergeur basée sur Svelte(kit) et Tailwindcss, avec intégration de bases de données PostgreSQL et Prisma, et utilisation de Golang pour une partie du backend."
 		}
 	],
-	interests: ['Lecture', 'Écriture', 'Musique', 'Cyberpunk', 'FL Studio'],
+	interests: ['Web3', 'Écriture', 'Musique', 'Littérature', 'FL Studio'],
 	technologies: [
 		{
 			src: 'svelte',
