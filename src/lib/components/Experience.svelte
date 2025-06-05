@@ -13,6 +13,7 @@
 			title={experience.title}
 			period={experience.period}
 			description={experience.description}
+			link={experience.link}
 		/>
 	{/each}
 </div>

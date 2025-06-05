@@ -1,5 +1,7 @@
 <script>
-	let { title, period, description } = $props();
+	import Share from "@tabler/icons-svelte/icons/share";
+
+	let { title, period, description, link } = $props();
 </script>
 
 <div class="mt-2 border-l-[3px] border-dotted border-blue-300 pl-10 relative">
@@ -21,7 +23,11 @@
 			/>
 		</svg>
 	</div>
-	<h5 class="text-xl font-semibold -mt-3 text-[#FF88A4]">{title}</h5>
+	{#if link}
+		<a class="text-xl font-semibold -mt-3 text-[#FF88A4] hover:underline flex gap-2 items-center" href={link}>{title} <Share class="h-8" /></a>
+	{:else}
+		<h5 class="text-xl font-semibold -mt-3 text-[#FF88A4]">{title}</h5>
+	{/if}
 	<h6 class="text-lg font-light mb-3">{period}</h6>
 	<p>{description}</p>
 </div>

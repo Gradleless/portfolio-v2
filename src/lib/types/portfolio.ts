@@ -7,6 +7,7 @@ interface Experience {
     title: string;
     period: string;
     description: string;
+	link?: string;
 }
 
 interface Technology {

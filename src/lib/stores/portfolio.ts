@@ -32,10 +32,11 @@ export const portfolioData: PortfolioData = {
 				"Je travaille comme freelance pour divers projets, notamment dans la conception d'applications web fullstack avec des technologies modernes"
 		},
 		{
-			title: 'Festi Pizza',
-			period: 'Annoeullin, France',
+			title: 'Projet MediaTek86',
+			period: 'CNED - 1ere année de BTS SIO SLAM',
 			description:
-				"Conception d'une application avec Svelte(kit) et Tailwindcss, pour la gestion des commandes et la présentation des menus en ligne."
+				"Conception d'une application de bureau pour la gestion du personnel et des absences, utilisant C#, WPF. L'application est conçue pour le réseau Mediatek86, fédérant les médiathèques de Vienne.",
+				link: "https://github.com/Gradleless/mediatek86"
 		},
 		{
 			title: 'Vitalliance',
