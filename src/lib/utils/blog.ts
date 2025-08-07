@@ -29,15 +29,19 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 				const Component = mod.default;
 				const result = render(Component);
 				readingTime = calculateReadingTime(result.body);
+				console.log(`Reading time for ${slug}:`, readingTime);
 			} catch (error) {
+				console.warn(`Failed to calculate reading time for ${slug}:`, error);
 				readingTime = 1;
 			}
 			
-			posts.push({
+			const post = {
 				slug,
 				...mod.metadata,
 				readingTime
-			});
+			};
+			console.log(`Final post object for ${slug}:`, post);
+			posts.push(post);
 		}
 	}	
 
