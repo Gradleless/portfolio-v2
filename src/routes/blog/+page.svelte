@@ -140,19 +140,39 @@
 				{/each}
 			</div>
 			
-			{#if data.posts.length >= 9}
-				<div class="flex justify-center">
-					<nav class="flex gap-2" aria-label="Pagination">
-						<button class="px-4 py-2 bg-[#8aa3ff] text-white rounded-lg hover:bg-[#7290fd] transition-colors font-medium shadow-md">
-							1
-						</button>
-						<button class="px-4 py-2 bg-white text-[#8aa3ff] border-2 border-[#8aa3ff] rounded-lg hover:bg-blue-50 transition-colors font-medium">
-							2
-						</button>
-						<button class="px-4 py-2 bg-white text-[#8aa3ff] border-2 border-[#8aa3ff] rounded-lg hover:bg-blue-50 transition-colors font-medium">
-							3
-						</button>
-					</nav>
+			{#if data.pagination.totalPages > 1}
+				<div class="flex justify-center items-center gap-2">
+					{#if data.pagination.hasPrevPage}
+						<a 
+							href="?page={data.pagination.currentPage - 1}"
+							class="px-4 py-2 bg-white text-[#8aa3ff] border-2 border-[#8aa3ff] rounded-lg hover:bg-blue-50 transition-colors font-medium"
+						>
+							← Précédent
+						</a>
+					{/if}
+					
+					{#each Array(data.pagination.totalPages) as _, i}
+						{@const pageNum = i + 1}
+						<a 
+							href="?page={pageNum}"
+							class="px-4 py-2 rounded-lg font-medium transition-colors {pageNum === data.pagination.currentPage ? 'bg-[#8aa3ff] text-white shadow-md' : 'bg-white text-[#8aa3ff] border-2 border-[#8aa3ff] hover:bg-blue-50'}"
+						>
+							{pageNum}
+						</a>
+					{/each}
+					
+					{#if data.pagination.hasNextPage}
+						<a 
+							href="?page={data.pagination.currentPage + 1}"
+							class="px-4 py-2 bg-white text-[#8aa3ff] border-2 border-[#8aa3ff] rounded-lg hover:bg-blue-50 transition-colors font-medium"
+						>
+							Suivant →
+						</a>
+					{/if}
+				</div>
+				
+				<div class="text-center text-sm text-[#666] mt-4">
+					Page {data.pagination.currentPage} sur {data.pagination.totalPages} ({data.pagination.totalPosts} articles)
 				</div>
 			{/if}
 		{/if}
