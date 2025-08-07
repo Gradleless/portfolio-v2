@@ -1,16 +1,52 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { mdsvex } from 'mdsvex';
+import { createHighlighter } from 'shiki';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+
+const highlighter = await createHighlighter({
+	themes: ['github-dark'],
+	langs: ['javascript', 'typescript', 'html', 'css', 'svelte', 'bash', 'json', 'go']
+});
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
-	// for more information about preprocessors
-	preprocess: vitePreprocess(),
+	extensions: ['.svelte', '.md'],
+	
+	preprocess: [
+		vitePreprocess(),
+		mdsvex({
+			extensions: ['.md'],
+			remarkPlugins: [remarkGfm],
+			rehypePlugins: [
+				rehypeSlug, 
+				[rehypeAutolinkHeadings, {
+					behavior: 'append',
+					properties: {
+						className: 'heading-link',
+						'aria-label': 'Copier le lien vers cette section',
+						'data-copy-link': true
+					},
+					content: {
+						type: 'text',
+						value: '📋'
+					}
+				}]
+			],
+			highlight: {
+				highlighter: (code, lang) => {
+					return highlighter.codeToHtml(code, {
+						lang: lang || 'text',
+						theme: 'github-dark'
+					});
+				}
+			}
+		})
+	],
 
 	kit: {
-		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
-		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
-		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter()
 	}
 };

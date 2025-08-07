@@ -1,12 +1,11 @@
 <script>
-	import { Toaster } from 'svelte-sonner';
 	import Header from '$lib/components/Header.svelte';
 	import About from '$lib/components/About.svelte';
 	import Education from '$lib/components/Education.svelte';
 	import Experience from '$lib/components/Experience.svelte';
 	import Sidebar from '$lib/components/Aside.svelte';
 	import { portfolioData } from '$lib/stores/portfolio';
-	import '../app.css';
+	import BlogPreview from '$lib/components/BlogPreview.svelte';
 </script>
 
 <svelte:head>
@@ -46,8 +45,9 @@
 				<Education data={portfolioData} />
 				<Experience data={portfolioData.experiences} />
 			</div>
+
+			<BlogPreview />
 		</div>
 		<Sidebar data={portfolioData} />
 	</section>
-	<Toaster richColors />
 </main>

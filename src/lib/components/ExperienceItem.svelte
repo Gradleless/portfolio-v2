@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Share from "@tabler/icons-svelte/icons/share";
 
 	let { title, period, description, link } = $props();

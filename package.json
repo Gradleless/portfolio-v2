@@ -16,9 +16,14 @@
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
     "autoprefixer": "^10.4.20",
+    "mdsvex": "^0.12.6",
     "postcss": "^8.4.47",
     "prettier": "^3.1.1",
     "prettier-plugin-svelte": "^3.1.2",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-reading-time": "^2.0.2",
     "svelte": "^5.0.0-next.1",
     "svelte-check": "^4.0.0",
     "tailwindcss": "^3.4.11",
@@ -29,6 +34,9 @@
   "dependencies": {
     "@sveltejs/enhanced-img": "^0.3.8",
     "@tabler/icons-svelte": "^3.17.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^24.2.0",
+    "shiki": "^3.9.2",
     "svelte-sonner": "^0.3.28",
     "zod": "^3.23.8"
   }

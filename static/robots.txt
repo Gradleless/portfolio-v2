@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: 
+Sitemap: https://lycia.anhost.fr/sitemap.xml

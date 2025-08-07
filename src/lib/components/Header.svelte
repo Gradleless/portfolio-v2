@@ -1,6 +1,7 @@
 <script>
 	import StarColumn from './StarColumn.svelte';
 	import QRCode from "$lib/images/qr-code.png?enhanced";
+	import RosetteDiscountCheck from '@tabler/icons-svelte/icons/rosette-discount-check';
 </script>
 
 <section class="md:px-16 px-5 min-h-screen">
@@ -17,6 +18,13 @@
 			<span class="absolute right-[-1.8vw] max-md:right-[-4vw] rotate-12 top-3 text-[#C8D4FF] text-2xl 2xl:text-3xl">♡</span>
 		</span>
 	</p>
+
+	<div class="mt-8">
+		<a href="/blog" class="inline-flex items-center gap-2 bg-[#8aa3ff] hover:bg-[#7290fd] text-white px-6 py-3 rounded-full font-playwrite text-lg transition-all duration-300 hover:scale-105">
+			<RosetteDiscountCheck class="w-6 h-6" />
+			Découvrir mon blog
+		</a>
+	</div>
 
 	<div class="flex justify-between pt-5 2xl:pt-10 pb-64 relative">
 		<div class="flex flex-row space-x-10 items-end relative">

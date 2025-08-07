@@ -30,7 +30,7 @@
 		<Technologies data={data.technologies} />
 	</section>
 
-	<section class="space-y-4 transition-transform duration-300">
+	<section id="contact" class="space-y-4 transition-transform duration-300">
 		<SectionTitle title="CONTACT" />
 		<address class="space-y-2">
 			{#each data.contact as item}
