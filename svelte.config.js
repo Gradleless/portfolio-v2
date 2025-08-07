@@ -23,15 +23,11 @@ const config = {
 			rehypePlugins: [
 				rehypeSlug, 
 				[rehypeAutolinkHeadings, {
-					behavior: 'append',
+					behavior: 'wrap',
 					properties: {
 						className: 'heading-link',
 						'aria-label': 'Copier le lien vers cette section',
 						'data-copy-link': true
-					},
-					content: {
-						type: 'text',
-						value: '📋'
 					}
 				}]
 			],

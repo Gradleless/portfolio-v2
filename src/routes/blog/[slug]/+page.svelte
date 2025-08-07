@@ -176,20 +176,15 @@
 	}
 
 	:global(.heading-link) {
-		color: #8aa3ff !important;
-		opacity: 0;
-		transition: opacity 0.2s;
 		text-decoration: none !important;
-		margin-left: 0.5rem;
 		cursor: pointer;
-		font-size: 0.8em;
+		color: inherit;
+		transition: text-decoration 0.2s;
 	}
 
-	:global(h1:hover .heading-link),
-	:global(h2:hover .heading-link),
-	:global(h3:hover .heading-link),
-	:global(h4:hover .heading-link) {
-		opacity: 1;
+	:global(.heading-link:hover) {
+		color: inherit;
+		text-decoration: underline !important;
 	}
 
 	:global(.hljs) {
