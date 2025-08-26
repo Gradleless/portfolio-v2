@@ -33,6 +33,7 @@
 	<meta name="description" content={post.description} />
 	<meta name="keywords" content={post.tags?.join(', ') || ''} />
 	<meta name="author" content="Lycia Dufour" />
+	<meta name="robots" content="index, follow" />
 	
 	<meta property="og:title" content="{post.title} - Blog de Lycia" />
 	<meta property="og:description" content={post.description} />
