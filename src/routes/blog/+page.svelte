@@ -9,6 +9,7 @@
 	// TODO: Make multiple components for the blog
 </script>
 
+<!-- TODO: Remove SEO boilerplate -->
 <svelte:head>
 	<title>Blog - Lycia Dufour | Développeuse Web</title>
 	<meta name="description" content="Articles sur le développement web, SvelteKit, TypeScript et mes retours d'expérience sur mes projets. Découvrez mes réflexions techniques." />
@@ -19,14 +20,14 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="Blog - Lycia Dufour | Développeuse Web" />
 	<meta property="og:description" content="Articles sur le développement web, SvelteKit, TypeScript et mes retours d'expérience." />
-	<meta property="og:url" content="https://lycia.anhost.fr/blog" />
+	<meta property="og:url" content="https://lycia.dev/blog" />
 	<meta property="og:site_name" content="Blog de Lycia Dufour" />
 	
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content="Blog - Lycia Dufour" />
 	<meta name="twitter:description" content="Articles sur le développement web et mes projets" />
 	
-	<link rel="canonical" href="https://lycia.anhost.fr/blog" />
+	<link rel="canonical" href="https://lycia.dev/blog" />
 </svelte:head>
 
 <div class="min-h-screen bg-[#fcf8f0]">

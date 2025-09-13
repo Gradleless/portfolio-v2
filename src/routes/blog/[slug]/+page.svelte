@@ -38,9 +38,9 @@
 	<meta property="og:title" content="{post.title} - Blog de Lycia" />
 	<meta property="og:description" content={post.description} />
 	<meta property="og:type" content="article" />
-	<meta property="og:url" content="https://lycia.anhost.fr/blog/{post.slug}" />
+	<meta property="og:url" content="https://lycia.dev/blog/{post.slug}" />
 	{#if post.image}
-		<meta property="og:image" content="https://lycia.anhost.fr{post.image}" />
+		<meta property="og:image" content="https://lycia.dev{post.image}" />
 	{/if}
 </svelte:head>
 

@@ -42,7 +42,7 @@
 		"author": {
 			"@type": "Person",
 			"name": "Lycia Dufour",
-			"url": "https://lycia.anhost.fr"
+			"url": "https://lycia.dev"
 		},
 		"datePublished": "${date}",
 		"dateModified": "${date}",
