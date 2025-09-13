@@ -21,8 +21,8 @@
 		property="og:description"
 		content="Portfolio de la développeuse web dont vous aurez bientôt besoin"
 	/>
-	<meta property="og:image" content="https://lycia.anhost.fr/og.png" />
-	<meta property="og:url" content="https://lycia.anhost.fr" />
+	<meta property="og:image" content="https://lycia.dev/og.png" />
+	<meta property="og:url" content="https://lycia.dev" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Portfolio - Lycia Dufour" />
 
@@ -32,8 +32,8 @@
 		name="twitter:description"
 		content="Portfolio de la développeuse web dont vous aurez bientôt besoin"
 	/>
-	<meta name="twitter:image" content="https://lycia.anhost.fr/og.png" />
-	<link rel="canonical" href="https://lycia.anhost.fr" />
+	<meta name="twitter:image" content="https://lycia.dev/og.png" />
+	<link rel="canonical" href="https://lycia.dev" />
 </svelte:head>
 <main class="min-h-screen bg-[#fcf8f0] max-md:py-24 md:pt-32">
 	<Header />

@@ -1,7 +1,7 @@
 import { getAllPosts } from '$lib/utils/blog';
 
 export const prerender = true;
-const website = 'https://lycia.anhost.fr';
+const website = 'https://lycia.dev';
 
 export async function GET() {
 	const posts = await getAllPosts();
