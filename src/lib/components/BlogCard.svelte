@@ -9,9 +9,10 @@
 <article class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-blue-100 group hover:scale-105">
 	{#if post.image}
 		<div class="aspect-video bg-contain overflow-hidden">
-			<img 
-				src={post.image} 
+			<img
+				src={post.image}
 				alt={post.title}
+				loading="lazy"
 				class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
 			/>
 		</div>
