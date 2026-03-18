@@ -1,17 +1,17 @@
 import { json } from '@sveltejs/kit';
 import { DISCORD_WEBHOOK_URL } from '$env/static/private';
-import { requestIp } from '../../../hooks.server.js';
 const rateLimit = new Map();
 
-export async function POST({ request }) {
+export async function POST({ request, getClientAddress }) {
 	const { name, email, message } = await request.json();
 
+	const clientIp = request.headers.get('CF-Connecting-IP') ?? getClientAddress();
 	const now = Date.now();
 	const limit = 60000;
-	const requests = rateLimit.get(requestIp) || [];
+	const requests = rateLimit.get(clientIp) || [];
 
 	const recentRequests = requests.filter((timestamp: number) => now - timestamp < limit);
-	rateLimit.set(requestIp, recentRequests);
+	rateLimit.set(clientIp, recentRequests);
 
 	if (recentRequests.length >= 2) {
 		return json({ success: false, message: 'Rate limit exceeded' }, { status: 429 });
