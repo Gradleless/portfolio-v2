@@ -1,4 +1,4 @@
-import { getAllPosts } from '$lib/utils/blog';
+import { getAllPosts, SUPPORTED_LANGS } from '$lib/utils/blog';
 
 export const prerender = true;
 
@@ -14,14 +14,21 @@ function urlEntry(loc: string, priority: number, changefreq: string, lastmod: st
 }
 
 export async function GET() {
-	const posts = await getAllPosts();
 	const buildDate = new Date().toISOString();
+
+	const postsByLang = await Promise.all(
+		SUPPORTED_LANGS.map(async (lang) => ({ lang, posts: await getAllPosts(lang) }))
+	);
 
 	const urls = [
 		urlEntry(BASE_URL, 1.0, 'monthly', buildDate),
-		urlEntry(`${BASE_URL}/blog`, 0.8, 'weekly', buildDate),
-		...posts.map((post) =>
-			urlEntry(`${BASE_URL}/blog/${post.slug}`, 0.7, 'monthly', new Date(post.date).toISOString())
+		...SUPPORTED_LANGS.map((lang) =>
+			urlEntry(`${BASE_URL}/${lang}/blog`, 0.8, 'weekly', buildDate)
+		),
+		...postsByLang.flatMap(({ lang, posts }) =>
+			posts.map((post) =>
+				urlEntry(`${BASE_URL}/${lang}/blog/${post.slug}`, 0.7, 'monthly', new Date(post.date).toISOString())
+			)
 		)
 	];
 
