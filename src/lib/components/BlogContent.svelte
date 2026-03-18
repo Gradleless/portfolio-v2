@@ -1,5 +1,17 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import mediumZoom from 'medium-zoom';
+
 	let { content, image, imageAlt = '' }: { content: string; image?: string; imageAlt?: string } = $props();
+
+	let contentEl: HTMLElement;
+
+	onMount(() => {
+		mediumZoom(contentEl.querySelectorAll('img'), {
+			margin: 24,
+			background: 'rgba(0, 0, 0, 0.8)'
+		});
+	});
 </script>
 
 <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100">
@@ -14,11 +26,11 @@
 	{/if}
 
 	<div class="p-8 md:p-12 lg:p-16">
-		<div class="prose prose-lg prose-slate max-w-none blog-reading
+		<div bind:this={contentEl} class="prose prose-lg prose-slate max-w-none blog-reading
 					prose-headings:font-playwrite prose-headings:text-[#8aa3ff] prose-headings:scroll-mt-20
 					prose-h1:text-3xl prose-h1:leading-[3rem] prose-h1:mb-8 prose-h1:border-b prose-h1:border-blue-200 prose-h1:pb-4
 					prose-h2:text-2xl prose-h2:leading-10 prose-h2:mb-6 prose-h2:mt-12 prose-h2:border-l-4 prose-h2:border-[#94b1f5] prose-h2:md:px-6 prose-h2:px-2 prose-h2:py-3 prose-h2:bg-blue-50/50 prose-h2:rounded-r-lg
-					prose-h3:text-xl prose-h3:leading-10 prose-h3:mb-4 prose-h3:mt-8 prose-h3:text-[#666] prose-h3:border-b prose-h3:border-gray-200 prose-h3:pb-2
+					prose-h3:text-xl prose-h3:leading-10 prose-h3:mb-4 prose-h3:mt-8 prose-h3:text-[#8aa3ff]
 					prose-h4:text-lg prose-h4:leading-10 prose-h4:mb-3 prose-h4:mt-6 prose-h4:text-[#777] prose-h4:font-semibold
 					prose-p:text-[#333] prose-p:mb-8 prose-p:text-base
 					prose-a:text-[#FF88A4] prose-a:font-medium prose-a:no-underline hover:prose-a:underline hover:prose-a:text-[#e570a0] prose-a:transition-colors
