@@ -20,7 +20,7 @@
 	</p>
 
 	<div class="mt-8">
-		<a href="/blog" class="inline-flex items-center gap-2 bg-[#8aa3ff] hover:bg-[#7290fd] text-white px-6 py-3 rounded-full font-playwrite text-lg transition-all duration-300 hover:scale-105">
+		<a href="/fr/blog" class="inline-flex items-center gap-2 bg-[#8aa3ff] hover:bg-[#7290fd] text-white px-6 py-3 rounded-full font-playwrite text-lg transition-all duration-300 hover:scale-105">
 			<RosetteDiscountCheck class="w-6 h-6" />
 			Découvrir mon blog
 		</a>

@@ -17,7 +17,7 @@
 		<div class="space-y-4">
 			{#each posts as post}
 				<article class="border-l-[3px] border-dotted border-blue-300 pl-6 py-3 hover:border-[#8aa3ff] transition-colors">
-					<a href="/blog/{post.slug}" class="group">
+					<a href="/fr/blog/{post.slug}" class="group">
 						<h3 class="text-lg font-semibold text-[#8aa3ff] group-hover:text-[#7290fd] transition-colors mb-1 font-playwrite">
 							{post.title}
 						</h3>
@@ -34,7 +34,7 @@
 		</div>
 
 		<div class="text-center">
-			<a href="/blog" class="inline-flex items-center gap-2 text-[#8aa3ff] hover:text-[#7290fd] font-semibold transition-colors">
+			<a href="/fr/blog" class="inline-flex items-center gap-2 text-[#8aa3ff] hover:text-[#7290fd] font-semibold transition-colors">
 				Voir tous les articles
 				<IconArrowRight class="w-4 h-4" />
 			</a>
@@ -45,7 +45,7 @@
 				<IconPencil class="w-8 h-8 text-[#8aa3ff]" />
 			</div>
 			<p class="text-[#666] mb-4 font-playwrite">Bientôt des articles passionnants !</p>
-			<a href="/blog" class="inline-flex items-center gap-2 text-[#8aa3ff] hover:text-[#7290fd] font-semibold transition-colors">
+			<a href="/fr/blog" class="inline-flex items-center gap-2 text-[#8aa3ff] hover:text-[#7290fd] font-semibold transition-colors">
 				<IconPencil class="w-4 h-4" />
 				Découvrir mon blog
 			</a>

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { BlogPost } from '$lib/types/blog';
-	import { formatDate } from '$lib/utils/blog';
+	import { formatDate, type Lang } from '$lib/utils/blog';
 	import { IconCalendar, IconClock, IconTag } from '@tabler/icons-svelte';
 
-	let { post }: { post: BlogPost } = $props();
+	let { post, lang = 'fr' }: { post: BlogPost; lang: Lang } = $props();
 </script>
 
 <header class="bg-gradient-to-br from-[#8aa3ff]/5 to-[#FF88A4]/5 border-b border-blue-100">
@@ -19,13 +19,13 @@
 		<div class="flex flex-wrap items-center gap-1 md:gap-6 text-[#666] mb-8">
 			<div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
 				<IconCalendar class="w-5 h-5 text-[#FF88A4]" />
-				<span class="font-medium">{formatDate(post.date)}</span>
+				<span class="font-medium">{formatDate(post.date, lang)}</span>
 			</div>
 
 			{#if post.readingTime}
 				<div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
 					<IconClock class="w-5 h-5 text-[#FF88A4]" />
-					<span class="font-medium">{post.readingTime} min de lecture</span>
+					<span class="font-medium">{post.readingTime} {lang === 'fr' ? 'min de lecture' : 'min read'}</span>
 				</div>
 			{/if}
 		</div>

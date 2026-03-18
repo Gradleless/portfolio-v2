@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { IconPencil, IconSparkles } from '@tabler/icons-svelte';
+	import type { Lang } from '$lib/utils/blog';
+
+	let { lang = 'fr' }: { lang?: Lang } = $props();
 </script>
 
 <header class="bg-gradient-to-br from-[#8aa3ff]/10 to-[#FF88A4]/5 relative overflow-hidden">
@@ -12,26 +15,30 @@
 						<IconSparkles class="w-6 h-6 text-[#8aa3ff] absolute -top-2 -right-5" />
 					</div>
 					<h1 class="text-4xl font-bold text-[#8aa3ff] font-playwrite">
-						Mon Blog
+						{lang === 'fr' ? 'Mon Blog' : 'My Blog'}
 					</h1>
 				</div>
 
 				<p class="text-xl md:text-2xl text-[#555] leading-relaxed mb-8 max-w-2xl mx-auto md:mx-0">
-					Bienvenue dans mon univers ! Vous trouverez ici mes <strong class="text-[#8aa3ff]">réflexions</strong> sur le développement web, mes <strong class="text-[#FF88A4]">découvertes</strong> technologiques et mes retours d'expérience.
+					{#if lang === 'fr'}
+						Bienvenue dans mon univers ! Vous trouverez ici mes <strong class="text-[#8aa3ff]">réflexions</strong> sur le développement web, mes <strong class="text-[#FF88A4]">découvertes</strong> technologiques et mes retours d'expérience.
+					{:else}
+						Welcome to my corner of the internet! Here you'll find my <strong class="text-[#8aa3ff]">thoughts</strong> on web development, <strong class="text-[#FF88A4]">discoveries</strong> and hands-on experience.
+					{/if}
 				</p>
 
 				<div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-[#666]">
 					<div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
 						<IconSparkles class="w-4 h-4 text-[#FF88A4]" />
-						<span class="font-medium">Développement Web</span>
+						<span class="font-medium">{lang === 'fr' ? 'Développement Web' : 'Web Development'}</span>
 					</div>
 					<div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
 						<IconSparkles class="w-4 h-4 text-[#8aa3ff]" />
-						<span class="font-medium">Retours d'expérience</span>
+						<span class="font-medium">{lang === 'fr' ? "Retours d'expérience" : 'Experience & Insights'}</span>
 					</div>
 					<div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
 						<IconSparkles class="w-4 h-4 text-[#FF88A4]" />
-						<span class="font-medium">Tutoriels</span>
+						<span class="font-medium">{lang === 'fr' ? 'Tutoriels' : 'Tutorials'}</span>
 					</div>
 				</div>
 			</div>
