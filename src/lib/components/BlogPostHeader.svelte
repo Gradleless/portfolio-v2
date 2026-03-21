@@ -9,7 +9,7 @@
 <header class="bg-gradient-to-br from-[#8aa3ff]/5 to-[#FF88A4]/5 border-b border-blue-100">
 	<div class="max-w-4xl mx-auto px-5 py-16 md:py-24">
 		<h1 class="text-3xl md:leading-[3.5rem] leading-[3rem] md:text-4xl font-bold text-[#8aa3ff] font-playwrite mb-6">
-			{post.title}
+			{@html post.title.replace(/`([^`]+)`/g, '<code class="font-mono bg-[#8aa3ff]/10 px-2 py-1 rounded text-2xl md:text-3xl mx-1">$1</code>')}
 		</h1>
 
 		<p class="text-lg md:text-xl text-[#555] mb-8 leading-relaxed max-w-3xl">
@@ -47,3 +47,9 @@
 		{/if}
 	</div>
 </header>
+
+<style>
+	h1 :global(code) {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+	}
+</style>

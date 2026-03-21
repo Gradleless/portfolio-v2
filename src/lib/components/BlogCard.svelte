@@ -38,7 +38,7 @@
 		{/if}
 
 		<h3 class="text-xl font-bold text-[#8aa3ff] mb-4 font-playwrite group-hover:text-[#7290fd] transition-colors leading-9">
-			{post.title}
+			{@html post.title.replace(/`([^`]+)`/g, '<code class="font-mono bg-[#8aa3ff]/10 px-1 rounded text-lg mx-0.5">$1</code>')}
 		</h3>
 
 		<p class="text-[#666] mb-6 line-clamp-3 leading-relaxed">
@@ -67,3 +67,9 @@
 		</span>
 	</div>
 </article>
+
+<style>
+	h3 :global(code) {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+	}
+</style>
