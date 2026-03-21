@@ -36,7 +36,10 @@ const config = {
 					return highlighter.codeToHtml(code, {
 						lang: lang || 'text',
 						theme: 'github-dark'
-					});
+					})
+					.replace(/\{/g, '&#123;')
+					.replace(/\}/g, '&#125;')
+					.replace('tabindex="0"', '');
 				}
 			}
 		})
