@@ -19,7 +19,7 @@
 				<article class="border-l-[3px] border-dotted border-blue-300 pl-6 py-3 hover:border-[#8aa3ff] transition-colors">
 					<a href="/fr/blog/{post.slug}" class="group">
 						<h3 class="text-lg font-semibold text-[#8aa3ff] group-hover:text-[#7290fd] transition-colors mb-1 font-playwrite">
-							{post.title}
+							{@html post.title.replace(/`([^`]+)`/g, '<code class="font-mono bg-[#8aa3ff]/10 px-1 rounded text-base mx-0.5">$1</code>')}
 						</h3>
 						<p class="text-sm text-[#666] mb-2 line-clamp-2">
 							{post.description}
@@ -52,3 +52,9 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	h3 :global(code) {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+	}
+</style>
