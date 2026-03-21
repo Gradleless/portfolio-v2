@@ -1,10 +1,10 @@
 ---
-title: "`__NUXT_DATA__` : reverse engineering du format de sérialisation de Nuxt 3"
+title: '`__NUXT_DATA__` : reverse engineering du format de sérialisation de Nuxt 3'
 description: "Comment j'ai décodé le format de payload SSR de Nuxt 3 en construisant un serveur MCP — tableaux plats, indices comme pointeurs, références circulaires et types tagués."
-date: "2025-10-14"
+date: '2025-10-14'
 published: true
-tags: ["reverse-engineering", "Nuxt", "JavaScript", "TypeScript", "SSR", "devalue"]
-image: "/blog-images/nuxt-parser/screenshot-devtools.png"
+tags: ['reverse-engineering', 'Nuxt', 'JavaScript', 'TypeScript', 'SSR', 'devalue']
+image: '/blog-images/nuxt-parser/screenshot-devtools.png'
 ---
 
 # `__NUXT_DATA__` : reverse engineering du format de sérialisation de Nuxt 3
@@ -19,7 +19,7 @@ Première approche : regarder le HTML de la page profil et extraire ce dont j'ai
 
 ```html
 <script id="__NUXT_DATA__" type="application/json">
-  [0,1,2,3,4,"Alice","full-stack",42,{"name":5,"job":6,"age":7},...]
+ [0,1,2,3,4,"Alice","full-stack",42,{"name":5,"job":6,"age":7},...]
 </script>
 ```
 
@@ -35,7 +35,7 @@ Voilà ce que c'est vraiment, et pourquoi c'est pas trivial à parser.
 
 ![Tableau plat avec flèches entre indices](/blog-images/nuxt-parser/flat-array.png)
 
-[devalue](https://github.com/Rich-Harris/devalue) — la librairie que Nuxt utilise pour sérialiser l'[état SSR](https://fr.wikipedia.org/wiki/Server-side_rendering) — ne stocke pas les objets comme du JSON classique. Au lieu de ça, il aplatit tout en un seul tableau et remplace chaque valeur par un **indice** vers une autre entrée du tableau.
+[devalue](https://github.com/Rich-Harris/devalue) — la librairie que Nuxt utilise pour sérialiser l'[état SSR](https://fr.wikipedia.org/wiki/Server-side_rendering) — ne stocke pas les objets comme du JSON classique. Au lieu de ça, il aplatit tout en un seul tableau et remplace chaque valeur par un __indice__ vers une autre entrée du tableau.
 
 Concrètement, l'objet `{ name: "Alice", job: "full-stack", age: 42 }` devient :
 
@@ -51,17 +51,14 @@ En résumé, pour extraire quoi que ce soit, il faut d'abord écrire un [résolv
 
 ```ts
 function resolve(idx: number): unknown {
-  const val = raw[idx];
-  if (typeof val !== "object" || val === null) return val;
-  if (Array.isArray(val)) {
-    return val.map((item) => (typeof item === "number" ? resolve(item) : item));
-  }
-  return Object.fromEntries(
-    Object.entries(val).map(([k, v]) => [
-      k,
-      typeof v === "number" ? resolve(v) : v,
-    ]),
-  );
+ const val = raw[idx];
+ if (typeof val !== 'object' || val === null) return val;
+ if (Array.isArray(val)) {
+  return val.map((item) => (typeof item === 'number' ? resolve(item) : item));
+ }
+ return Object.fromEntries(
+  Object.entries(val).map(([k, v]) => [k, typeof v === 'number' ? resolve(v) : v])
+ );
 }
 ```
 
@@ -77,28 +74,28 @@ Sur une app réelle avec des stores Pinia, le format génère des [refs circulai
 
 ```json
 [
-  { "user": 1, "session": 2 },
-  { "profile": 0, "name": 3 },
-  { "token": 4, "user": 1 },
-  "Alice",
-  "abc123"
+ { "user": 1, "session": 2 },
+ { "profile": 0, "name": 3 },
+ { "token": 4, "user": 1 },
+ "Alice",
+ "abc123"
 ]
 ```
 
 `index 0` référence `index 1`, qui référence `index 0`. Sans protection, le résolveur boucle à l'infini.
 
-Pour régler ce problème, il nous faut un cache avec un **[sentinel](https://fr.wikipedia.org/wiki/Valeur_sentinelle) `null`** posé avant de commencer la résolution d'un index. Si on retombe sur ce même index pendant qu'on le résout déjà, on retourne `null` au lieu de boucler. Une fois la résolution terminée, on remplace le sentinel par le vrai résultat.
+Pour régler ce problème, il nous faut un cache avec un __[sentinel](https://fr.wikipedia.org/wiki/Valeur_sentinelle) `null`__ posé avant de commencer la résolution d'un index. Si on retombe sur ce même index pendant qu'on le résout déjà, on retourne `null` au lieu de boucler. Une fois la résolution terminée, on remplace le sentinel par le vrai résultat.
 
 ```ts
 const cache = new Map<number, unknown>();
 
 function resolve(idx: number): unknown {
-  if (cache.has(idx)) return cache.get(idx);
-  cache.set(idx, null); // sentinel — coupe la boucle si on revient ici
-  const val = raw[idx];
-  // ... résolution ...
-  cache.set(idx, result);
-  return result;
+ if (cache.has(idx)) return cache.get(idx);
+ cache.set(idx, null); // sentinel — coupe la boucle si on revient ici
+ const val = raw[idx];
+ // ... résolution ...
+ cache.set(idx, result);
+ return result;
 }
 ```
 
@@ -108,7 +105,7 @@ Sur le payload de la plateforme freelance _dont je tairais le nom_, des dizaines
 
 ## Les types tagués — et ce que chaque app y ajoute
 
-devalue encode certains types JavaScript avec des **tableaux tagués** : le premier élément identifie le type, le reste ce sont les arguments.
+devalue encode certains types JavaScript avec des __tableaux tagués__ : le premier élément identifie le type, le reste ce sont les arguments.
 
 ```json
 ["Date", "2024-01-15"]
@@ -119,7 +116,7 @@ devalue encode certains types JavaScript avec des **tableaux tagués** : le prem
 
 Ces tableaux sont dans le même tableau plat que le reste — mélangés avec les objets et les primitives. Pour les distinguer d'un vrai tableau de données, devalue utilise une convention : si le premier élément est un string, c'est une instruction de désérialisation, pas une valeur. Le string dit quoi faire, le reste dit avec quoi. Le résolveur vérifie ça en premier et sait quoi construire.
 
-Pour les [valeurs scalaires](<https://fr.wikipedia.org/wiki/Scalaire_(physique)>) qu'on ne peut pas représenter en JSON classique, devalue utilise des **indices négatifs** dans les objets :
+Pour les [valeurs scalaires](<https://fr.wikipedia.org/wiki/Scalaire_(physique)>) qu'on ne peut pas représenter en JSON classique, devalue utilise des __indices négatifs__ dans les objets :
 
 ```json
 { "v": -1 }   →  { v: undefined }
@@ -141,7 +138,7 @@ Nuxt ajoute ses propres types par-dessus, pour les [wrappers de réactivité](ht
 
 `["Ref", 7]` signifie : un `ref()` Vue dont la valeur est à l'index 7. Pour l'extraction de données, on s'en fout de la réactivité — on résout juste `7` directement.
 
-Et là où ça devient vraiment intéressant : **chaque application Nuxt peut définir ses propres types**. Sur la marketplace que j'analysais, il y avait :
+Et là où ça devient vraiment intéressant : __chaque application Nuxt peut définir ses propres types__. Sur la marketplace que j'analysais, il y avait :
 
 ```json
 ["Profile", 3]
@@ -178,7 +175,7 @@ const { tags, stores } = extractor.inspect();
 ['Appraisals', 'Date', 'EmptyRef', 'Experiences', 'Profile', 'Ref', 'SkillSet', ...]
 ```
 
-C'est le premier truc à appeler sur une app inconnue — ça donne immédiatement la liste des types métier qu'on peut extraire avec `findByType`.
+C'est le premier truc à appeler sur une app inconnue, ça donne immédiatement la liste des types métier qu'on peut extraire avec `findByType`.
 
 `stores` retourne les objets résolus avec plus de 8 clés. Les stores Pinia sont les objets plats les plus denses du payload — c'est l'[heuristique](https://fr.wikipedia.org/wiki/Heuristique) qui marche dans la pratique.
 
@@ -188,7 +185,7 @@ C'est le premier truc à appeler sur une app inconnue — ça donne immédiateme
 
 ![Output de inspect() sur vueschool.io](/blog-images/nuxt-parser/inspect-exemple.png)
 
-Les stores Pinia sont sérialisés dans le tableau comme n'importe quel autre objet, sans marqueur explicite. Pas de clé `"_pinia"`, pas de header — ils sont là, indiscernables des autres objets, jusqu'à ce qu'on les résolve.
+Les stores Pinia sont sérialisés dans le tableau comme n'importe quel autre objet, sans marqueur explicite. Pas de clé `"_pinia"`, pas de header, ils sont juste là, indiscernables des autres objets, jusqu'à ce qu'on les résolve.
 
 Ce que retourne `stores` sur la marketplace :
 
@@ -204,7 +201,7 @@ Ce que retourne `stores` sur la marketplace :
 Pour cibler un store précis dont on connaît les clés, [duck-typing](https://fr.wikipedia.org/wiki/Duck_typing) :
 
 ```ts
-const store = extractor.getPiniaStore(["displayName", "jobTitle", "skills"]);
+const store = extractor.getPiniaStore(['displayName', 'jobTitle', 'skills']);
 ```
 
 Résultat : tout l'état du store profile — sans toucher à une API, sans avoir de session authentifiée, directement depuis le HTML de la page publique.
@@ -216,17 +213,17 @@ Résultat : tout l'état du store profile — sans toucher à une API, sans avoi
 J'ai packagé tout ça dans [nuxt-data-parser](https://github.com/Gradleless/nuxt-data-parser), zero-dependency, browser + Node.
 
 ```ts
-import { extractFromUrl } from "nuxt-data-parser";
+import { extractFromUrl } from 'nuxt-data-parser';
 
-const ex = await extractFromUrl("https://example.com/page");
+const ex = await extractFromUrl('https://example.com/page');
 
 // Explorer ce qui est disponible
 const { tags } = ex.inspect();
 // → ['Date', 'Experience', 'Profile', 'Ref', ...]
 
 // Extraire un type spécifique, avec le typage TypeScript
-const profile = ex.findByType<MonProfil>("Profile");
-const exps = ex.findAllByType<Experience>("Experience");
+const profile = ex.findByType<MonProfil>('Profile');
+const exps = ex.findAllByType<Experience>('Experience');
 
 // Ou résoudre n'importe quel index directement
 const val = ex.resolve(42);
@@ -234,4 +231,4 @@ const val = ex.resolve(42);
 
 Le package couvre la totalité du format devalue — types built-in, sentinels négatifs, TypedArrays, références circulaires, types app-définis. `findByType<T>` est générique, donc le résultat est typé si vous passez votre interface.
 
-Si vous avez déjà ouvert le source d'une page Nuxt et vu ce tableau illisible — maintenant vous savez ce que c'est, et y'a un outil pour le lire.
+Si vous avez déjà ouvert le source d'une page Nuxt et vu ce tableau illisible, maintenant vous savez ce que c'est, et y'a un outil pour le lire.
