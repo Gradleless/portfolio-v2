@@ -6,11 +6,9 @@
   }
 
   let { src, alt, href }: TechnologyIconProps = $props();
-  $effect.pre(() => {
-    src = "./techIcons/" + src + ".webp";
-  });
+  const fullSrc = $derived("./techIcons/" + src + ".webp");
 </script>
 
 <a {href} target="_blank" rel="noopener noreferrer">
-  <img loading="lazy" {src} {alt} class="w-10 h-10" />
+  <img loading="lazy" src={fullSrc} {alt} class="w-10 h-10" />
 </a>
