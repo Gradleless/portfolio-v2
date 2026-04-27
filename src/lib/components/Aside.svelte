@@ -6,6 +6,7 @@
 	import { IconMailForward, IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-svelte';
 	import Technologies from './Technologies.svelte';
 	import Form from './Form.svelte';
+	import Booking from './Booking.svelte';
 	let { data }: { data: PortfolioData } = $props();
 
 	const iconMap: any = {
@@ -37,6 +38,10 @@
 				<ContactItem href={item.href} Icon={iconMap[item.icon]} text={item.text} />
 			{/each}
 		</address>
+	</section>
+
+	<section class="mt-10 space-y-4">
+		<Booking />
 	</section>
 
 	<section class="mt-10 space-y-4">
