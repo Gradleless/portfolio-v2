@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	import Header from '$lib/components/Header.svelte';
 	import About from '$lib/components/About.svelte';
+	import Sidebar from '$lib/components/Aside.svelte';
+	import BlogPreview from '$lib/components/BlogPreview.svelte';
 	import Education from '$lib/components/Education.svelte';
 	import Experience from '$lib/components/Experience.svelte';
-	import Sidebar from '$lib/components/Aside.svelte';
+	import Header from '$lib/components/Header.svelte';
 	import { portfolioData } from '$lib/stores/portfolio';
-	import BlogPreview from '$lib/components/BlogPreview.svelte';
 	import SvelteSeo from 'svelte-seo';
+	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 </script>
@@ -39,10 +39,7 @@
 		jobTitle: 'Développeuse Web Freelance',
 		image: 'https://lycia.dev/og.png',
 		email: 'lycia.dufour@gmail.com',
-		sameAs: [
-			'https://github.com/gradleless',
-			'https://fr.linkedin.com/in/lycia-dufour-3ab8302b3'
-		]
+		sameAs: ['https://github.com/gradleless', 'https://fr.linkedin.com/in/lycia-dufour-3ab8302b3']
 	}}
 />
 
@@ -50,11 +47,11 @@
 	<meta name="author" content="Lycia Dufour" />
 	<link rel="icon" type="image/png" href="/sparkle.svg" />
 </svelte:head>
-<main class="min-h-screen bg-[#fcf8f0] max-md:py-24 md:pt-32">
+<main class="min-h-screen bg-[#fcf8f0] max-md:py-10 md:pt-10">
 	<Header />
 
 	<section class="xl:flex gap-16">
-		<div class="bg-white py-24 lg:px-24 px-5">
+		<div class="bg-white pt-24 pb-10 lg:px-24 px-5">
 			<About data={portfolioData} />
 			<div class="lg:grid lg:grid-cols-2 gap-5 lg:gap-16">
 				<Education data={portfolioData} />
