@@ -140,6 +140,6 @@ export const portfolioData: PortfolioData = {
 			icon: 'IconBrandLinkedin',
 			text: 'Lycia Dufour'
 		},
-		{ href: 'https://github.com/gradleless', icon: 'IconBrandGithub', text: 'Gradleless' }
+		{ href: 'https://github.com/heyitswit', icon: 'IconBrandGithub', text: 'Gradleless' }
 	]
 };
